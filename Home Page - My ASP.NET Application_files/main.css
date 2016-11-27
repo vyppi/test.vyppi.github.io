@@ -1,0 +1,187 @@
+﻿body {
+}
+.search
+{
+    margin:0 auto;
+
+}
+
+.tableNone {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tableNone thead > tr > th,
+.tableNone tbody > tr > th,
+.tableNone tfoot > tr > th,
+.tableNone thead > tr > td,
+.tableNone tbody > tr > td,
+.tableNone tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.428571429;
+  vertical-align: top;
+  border-top: 1px none #dddddd;
+}
+
+.tableNone thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dddddd;
+}
+
+.tableNone caption + thead tr:first-child th,
+.tableNone colgroup + thead tr:first-child th,
+.tableNone thead:first-child tr:first-child th,
+.tableNone caption + thead tr:first-child td,
+.tableNone colgroup + thead tr:first-child td,
+.tableNone thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+.tableNone tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+
+.tableNone .tableNone {
+  background-color: #28323E;
+}
+
+
+
+
+.divForPage 
+{
+    margin-left:10px; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#4E85E5;
+}
+.imgPage 
+{
+    float:right; 
+    width:200px;
+    padding-right:10px;
+    padding-left:10px;
+}
+
+.tableForm {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tableForm thead > tr > th,
+.tableForm tbody > tr > th,
+.tableForm tfoot > tr > th,
+.tableForm thead > tr > td,
+.tableForm tbody > tr > td,
+.tableForm tfoot > tr > td {
+  padding: 0px;
+  line-height: 1.428571429;
+  vertical-align: top;
+  border-top: 0px none #dddddd;
+}
+
+.tableForm thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dddddd;
+}
+    .tableForm tbody > tr > td > label {
+        //font-size:0.8em;
+        font-size:14px;
+    }
+
+.tableForm caption + thead tr:first-child th,
+.tableForm colgroup + thead tr:first-child th,
+.tableForm thead:first-child tr:first-child th,
+.tableForm caption + thead tr:first-child td,
+.tableForm colgroup + thead tr:first-child td,
+.tableForm thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+.tableForm tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+
+.tableForm .tableForm {
+  background-color: #ffffff;
+}
+
+.elementDiv1{
+    float:left;
+    padding:0,5px,0,0;
+    margin:0;
+    
+}
+.elementDiv2{
+    float:left;
+    padding:0,5px,0,0;
+    margin:0;
+    max-width:400px;
+}
+.elementDiv3{
+    float:left;
+    padding:0,5px,0,0;
+    margin:0;
+    min-width:200px;
+}
+
+
+.jumbotron_sg {
+  padding: 5px;
+  margin-bottom: 5px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  color: inherit;
+  background-color: #FFFFFF;
+}
+
+.jumbotron_sg h1 {
+  line-height: 1;
+  color: inherit;
+}
+
+.jumbotron_sg p {
+  line-height: 1.4;
+}
+
+.container .jumbotron_sg {
+  border-radius: 6px;
+  min-height:550px;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron_sg {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .container .jumbotron_sg {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+  .jumbotron_sg h1 {
+    font-size: 63px;
+  }
+}
+
+.jumbotron_sg form label {
+  font-size: 14px;
+}
+
+.jumbotron_sg form span {
+  font-size: 12px;
+  color:red;
+}
+
+
+.clear {
+ 	 	 clear: both;
+ }
+
+.p_form{
+    font-size:15px;
+        padding-top: 5px;
+}
+
+ #map {
+            height: 90%;
+        }

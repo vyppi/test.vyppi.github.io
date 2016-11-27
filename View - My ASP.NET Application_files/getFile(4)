@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><meta name="viewport" content="width=device-width, initial-scale=1" /><link href="../CSS/style.css" rel="stylesheet" type="text/css" /><link href="../CSS/responsive.css" rel="stylesheet" type="text/css" /><link href="../CSS/media-queries.css" rel="stylesheet" type="text/css" /><title>
+	Login Page
+</title>
+   <!-- <marquee><span style="color:red; font-size:15px">ZIMS will be shut down for scheduled updation at 4:30 PM for 30 minutes on 23/Jan/2016</span></marquee> -->
+</head>
+<body leftmargin="0" topmargin="0" class=default>
+    
+<script type="text/javascript">
+    function MM_swapImgRestore() { //v3.0
+        var i, x, a = document.MM_sr; for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++) x.src = x.oSrc;
+    }
+    function MM_findObj(n, d) { //v4.01
+        var p, i, x; if (!d) d = document; if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+            d = parent.frames[n.substring(p + 1)].document; n = n.substring(0, p);
+        }
+        if (!(x = d[n]) && d.all) x = d.all[n]; for (i = 0; !x && i < d.forms.length; i++) x = d.forms[i][n];
+        for (i = 0; !x && d.layers && i < d.layers.length; i++) x = MM_findObj(n, d.layers[i].document);
+        if (!x && d.getElementById) x = d.getElementById(n); return x;
+    }
+
+    function MM_swapImage() { //v3.0
+        var i, j = 0, x, a = MM_swapImage.arguments; document.MM_sr = new Array; for (i = 0; i < (a.length - 2); i += 3)
+            if ((x = MM_findObj(a[i])) != null) { document.MM_sr[j++] = x; if (!x.oSrc) x.oSrc = x.src; x.src = a[i + 2]; }
+    }
+</script>
+
+<div class="page-header">
+	<img class="rssb-logo fl" src="../../Common/Images/logo.gif" alt="RSSB Logo"/>
+	<div class="top-section">			
+		<p class="BIMS-heading arial-black">Zonal Information Management System</p>
+        <a class="user-manual fr" href="../../ZIMS_DeptUserManual.pdf" target="_blank">ZIMS User Manual</a>
+		<div class="mobile-mid-section">
+			<div class="top-blue"></div>
+			<div class="bottom-blue"></div>
+			<div class="BIMS-heading">Z.I.M.S</div>
+		</div>
+		<a class="mobile-menu"></a>
+	</div>
+	<div class="bottom-section">		
+         <p class="ticket-log fr">
+            For any IT related issue, please <a style="font-weight: bold;" href="http://172.21.10.25/support/" target="_blank">log a ticket </a>         
+         </p>
+	</div>
+</div>
+
+    
+<table cellpadding=3 cellspacing=3 width=100%>
+<tr>
+<td>
+  <form name="aspnetForm" method="post" action="./Login.aspx?StateInstanceID=3ac698a1-f888-4b44-8f74-2a486af07a66&amp;Continue=https%3a%2f%2fzims.in%3a13254%2fsgms%2fAccount%2fLogin" id="aspnetForm">
+<div>
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMzE2NTg5NTc4ZGSfiVV8ZHCAbDl+bR0CUD7MrZpfV+hexknpiDZcTk2ZpA==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/bimswebsite/WebResource.axd?d=wiKKPYZZ5i74mBd0SYq4TU8VD2naI_PQOLsdzcgRAsZvJjRe2KLICNqPwowHdsV4MIrEjzX7MMbY4qQD5W7guRvscRhTTJ59kB89gvXFEIs1&amp;t=635802961220000000" type="text/javascript"></script>
+
+
+<script src="/bimswebsite/WebResource.axd?d=IMZW8_9jxjkN-RnMD3QT8iM1Gv2-AXm34qqDxSzE8AS9ASxIYIW_pTOypJLXzeUS5x3EyAtgs58oF-x0YuQb_eK7YbT6wMMdk3pxNCL33Gk1&amp;t=635802961220000000" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="548B3A85" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAV4qP6PdzEVb8ffDPNd7fTR12f1SH4dveg1jKkqgL1JSXjjswiyhm+g6KodwobC/fPNH7hILR9lgXQfWCP5eBWLKU1K5y1S2omlE/J+vGqpiW1hBExJ7kmrV89dMFfbOr07RLyk9Ooz7bbC+z+2ms6k" />
+</div>
+    <div>
+        
+
+<script type="text/javascript">
+<!--
+    function MM_jumpMenu(targ, selObj, restore) { //v3.0
+        eval(targ + ".location='" + selObj.options[selObj.selectedIndex].value + "'");
+        if (restore) selObj.selectedIndex = 0;
+    }
+
+    function b_Submit_onclick() {
+
+    }
+
+
+    //-->
+
+    var Base64 = { _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", encode: function (e) { var t = ""; var n, r, i, s, o, u, a; var f = 0; e = Base64._utf8_encode(e); while (f < e.length) { n = e.charCodeAt(f++); r = e.charCodeAt(f++); i = e.charCodeAt(f++); s = n >> 2; o = (n & 3) << 4 | r >> 4; u = (r & 15) << 2 | i >> 6; a = i & 63; if (isNaN(r)) { u = a = 64 } else if (isNaN(i)) { a = 64 } t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a) } return t }, decode: function (e) { var t = ""; var n, r, i; var s, o, u, a; var f = 0; e = e.replace(/[^A-Za-z0-9\+\/\=]/g, ""); while (f < e.length) { s = this._keyStr.indexOf(e.charAt(f++)); o = this._keyStr.indexOf(e.charAt(f++)); u = this._keyStr.indexOf(e.charAt(f++)); a = this._keyStr.indexOf(e.charAt(f++)); n = s << 2 | o >> 4; r = (o & 15) << 4 | u >> 2; i = (u & 3) << 6 | a; t = t + String.fromCharCode(n); if (u != 64) { t = t + String.fromCharCode(r) } if (a != 64) { t = t + String.fromCharCode(i) } } t = Base64._utf8_decode(t); return t }, _utf8_encode: function (e) { e = e.replace(/\r\n/g, "\n"); var t = ""; for (var n = 0; n < e.length; n++) { var r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r) } else if (r > 127 && r < 2048) { t += String.fromCharCode(r >> 6 | 192); t += String.fromCharCode(r & 63 | 128) } else { t += String.fromCharCode(r >> 12 | 224); t += String.fromCharCode(r >> 6 & 63 | 128); t += String.fromCharCode(r & 63 | 128) } } return t }, _utf8_decode: function (e) { var t = ""; var n = 0; var r = c1 = c2 = 0; while (n < e.length) { r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r); n++ } else if (r > 191 && r < 224) { c2 = e.charCodeAt(n + 1); t += String.fromCharCode((r & 31) << 6 | c2 & 63); n += 2 } else { c2 = e.charCodeAt(n + 1); c3 = e.charCodeAt(n + 2); t += String.fromCharCode((r & 15) << 12 | (c2 & 63) << 6 | c3 & 63); n += 3 } } return t } }
+
+
+    function generatePwd() {
+
+        if (document.getElementById('txtPassword').value != "") {
+            document.getElementById("txtPassword").value = Base64.encode(document.getElementById("txtPassword").value)
+
+        }
+    }
+
+    
+
+</script>
+<div id="login-message">
+        Please use Google Chrome only for best experience.
+        <p class="small"><span>Note:</span> <strong>Internet Explorer</strong> doesn't support some of the features.</p>
+    </div>
+<div id="login-container">    
+    <div id="login-error-section">
+        <br />
+    </div>
+    <div id="login-box">
+        <div class="login-panel-head" align="center">
+            <p>Login</p>
+        </div>
+        <div class="login-panel-body">
+            <!-- login content starts here -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="5" frame="box" >
+                <tr>
+                    <td width=104 class="hide-in-mobile"><div align="right"><strong>User</strong>:</div></td>
+                    <td align="left">
+                        <input name="ctl00$ContentPlaceHolder1$txtUser" type="text" id="ctl00_ContentPlaceHolder1_txtUser" class="largeText" placeholder="User Name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width=104 class="hide-in-mobile"><div align="right"><strong>Password:</strong></div></td>
+                    <td align="left">
+                        <input name="ctl00$ContentPlaceHolder1$txtPassword" type="password" id="txtPassword" class="largeText" placeholder="Password" style="width:200px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="hide-in-mobile">&nbsp;</td>
+                    <td align="left" >
+                        
+                        <input type="submit" name="ctl00$ContentPlaceHolder1$btnSubmit" value="Submit" onclick="return generatePwd();" id="ctl00_ContentPlaceHolder1_btnSubmit" style="width:210px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="hide-in-mobile">&nbsp;</td>
+                    <td align="right">
+                        <a id="ctl00_ContentPlaceHolder1_lnkForgotPwd" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$lnkForgotPwd&#39;,&#39;&#39;)">Forgot Password</a>
+                    </td>                        
+                 </tr>                   
+            </table>
+            <!-- login content ends here -->
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+WebForm_AutoFocus('ctl00_ContentPlaceHolder1_txtUser');//]]>
+</script>
+</form>
+    
+</td>
+</tr>
+</table>
+
+    
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td >
+<font face="verdana" color="gray" size="1">&nbsp;&nbsp;Copyright&copy; Radha Soami Satsang Beas</font>
+</td>
+<td>
+	<font face="verdana" color="gray" size="1"><span id="ctl00_Footer1_lblEnvironment"></span></font>
+</td>
+<td>
+    <font face="verdana" color="gray" size="1">Revision 4626</font>
+</td>
+</tr>
+</table>        
+</body>
+
+</html>
