@@ -1,0 +1,306 @@
+﻿var myApp = angular.module('myApp', ['ngSanitize']);
+    myApp.controller(
+        'maintainSgController',
+        function ($scope, $http)
+        {
+            $scope.submersiblePump = 'Y';
+            $scope.showSubPumpCount = true;
+            //$scope.CreateSg.$setUntouched();
+            $scope.onCountryChange = function ()
+            {
+                console.log('Country selected is: ' + $scope.countryId);
+                getDataFromSrv("GetActiveZonesForCountry", "countryId", $scope.countryId, function (result) { $scope.zones = result; });
+            }
+
+            $scope.OnZoneChange = function ()
+            {
+                console.log('Zone selected is: ' + $scope.zoneId);
+                getDataFromSrv("GetActiveAreasForZone", "zoneId", $scope.zoneId, function (result) { $scope.areas = result; });
+            }
+
+            $scope.OnAreaChange = function () {
+                console.log('Area selected is: ' + $scope.areaId);
+                getDataFromSrv("GetStateTerritoryDistrictsForArea", "areaId", $scope.areaId, function (result) { $scope.areaData = result; });
+            }
+
+
+            $scope.OnCenterTypeChange = function ()
+            {
+                console.log('OnCenterTypeChange called for center type: ' + $scope.centerType);
+                //$scope.isCenter = $scope.centerType === 'C';
+            }
+
+            $scope.onLandOwnStatusChange = function ()
+            {
+                console.log('onLandOwnStatusChange called for landOwnStatusId: ' + $scope.landOwnerStatusId);
+
+            }
+
+            $scope.onOpeningDateChange = function ()
+            {
+                getDataFromSrv3("ValidateOpeningDate", "openingDateStr", $scope.openingDate, "upgradeDateStr", $scope.upgradeDate, "downgradeDateStr", $scope.downgradeDate,
+                    function (result) {
+                        $scope.hasOpeningDateError = !result.Valid;
+                        $scope.openingDateValidationError = result.Msg;
+                    });
+            }
+
+            $scope.onFcryDateOfBirthChange = function () {
+                var result = ValidateDate($scope.fcryDob, function (res) { $scope.hasFcryDobError = res; });
+                $scope.fcryDobValidationError = result;
+            }
+
+            $scope.onFcryApptDateChange = function () {
+                var result = ValidateDate($scope.fcryAppDate, function (res) { $scope.hasFcryAppDateError = res; });
+                $scope.fcryAppDateValidationError = result;
+            }
+
+            $scope.onAreaCodeChange = function ()
+            {
+                getDataFromSrv2("IsAreaCodeUnique", "areaCode", $scope.areacode, "areaId", $scope.areaId, function (result) { $scope.hasAreaCodeError = !result; });
+            }
+
+            $scope.IsSubmitDisabled = function()
+            {
+                if ($scope.centerType == undefined || $scope.landOwnerStatusId == undefined)
+                    return true;
+
+                if($scope.landOwnerStatusId != undefined)
+                {
+                    if ($scope.landOwnerStatusId == 'O')
+                        return $scope.ownedType == undefined;
+                    else return false;
+                }
+            }
+
+            $scope.onSubPumpChange = function () {
+                if ($scope.submersiblePump == 'Y') {
+                    $scope.showSubPumpCount = true;
+                } else {
+                    $scope.showSubPumpCount = false;
+                    document.getElementById("Submersible_Pump_Count").value = null;
+                }
+            }
+
+            $scope.onUpgradationDateChange = function () {
+                getDataFromSrv2("ValidateUpgDwnDate", "openingDateStr", $scope.openingDate, "upgDwnDateStr", $scope.upgradeDate,
+                    function (result) {
+                        $scope.hasUpgradeDateError = !result.Valid;
+                        $scope.upgradeDateValidationError = result.Msg;
+                    });
+
+            }
+            $scope.onDowngradeDateChange = function () {
+                getDataFromSrv2("ValidateUpgDwnDate", "openingDateStr", $scope.openingDate, "upgDwnDateStr", $scope.downgradeDate,
+                    function (result) {
+                        $scope.hasDowngradeDateError = !result.Valid;
+                        $scope.downgradeDateValidationError = result.Msg;
+                });
+                }
+            $scope.onLlStartDateChange = function ()
+            {
+                var result = ValidateDate($scope.llStartDate, function(res){ $scope.hasLlStartDateError = res;});
+                $scope.llStartDateValidationError = result;
+            }
+            $scope.onLlEndDateChange = function () {
+                var result = ValidateDate($scope.llEndDate, function (res) { $scope.hasLlEndDateError = res; });
+                $scope.llEndDateValidationError = result;
+            }
+
+            $scope.onCenterCodeChange = function () {
+                var sgId = document.getElementById("Satsang_Ghar_Id").value;
+                getDataFromSrv2("IsCenterCodeUnique", "cc", $scope.centerCode, "sgId", sgId, function (result) { $scope.ccHasError = !result; });
+            }
+            $scope.onFileChange = function () {
+                var sgId = document.getElementById("Satsang_Ghar_Id").value;
+                getDataFromSrv2("IsFileUnique", "file", $scope.file, "sgId", sgId, function (result) { $scope.fileHasError = !result; });
+            }
+            $scope.onFncrySgChange = function () {
+                getDataFromSrv("GetDesignationsForSghar", "sgId", $scope.fncrySgharId, function (result) { $scope.designations = result; });
+            }
+            $scope.onAreaForFilterChange = function () {
+                console.log("areaId for filtering is :" + $scope.areaId);
+                getDataFromSrv("GetSgForArea", "areaId", $scope.areaId, function (result) { $scope.sgs = result; });
+            }
+            $scope.onStateIdChange = function () {
+                getDataFromSrv2("IsStateIdValid", "stateId", $scope.stateId, "name", $scope.stateName, function (result) { $scope.hasStateIdError = !result; });
+            }
+            $scope.onTerritoryIdChange = function () {
+                getDataFromSrv2("IsTerritoryIdValid", "Id", $scope.TerritoryId, "name", $scope.TerritoryName, function (result) { $scope.hasTerritoryIdError = !result; });
+            }
+            
+            $scope.editDsts = function(id, name, stateId)
+            {
+                if(id>0)
+                {
+                    $scope.districtAddOrEdit = "Edit";
+                }
+                else
+                {
+                    $scope.districtAddOrEdit = "Add";
+                }
+                $scope.districtName = name;
+                $scope.districtId = id;
+                $scope.districtState = stateId;
+            }
+            
+            $scope.editTert = function (id, name, desc) {
+                if (id === "") {
+                    $scope.tertAddOrEdit = "Add";
+                }
+                else {
+                    $scope.tertAddOrEdit = "Edit";
+                }
+                $scope.TerritoryId = id;
+                $scope.TerritoryName = name;
+                $scope.TerritoryDesc = desc;
+            }
+
+            $scope.editState = function(id,name,desc)
+            {
+                if(id==="")
+                {
+                    $scope.stateAddOrEdit = "Add";
+                }
+                else
+                {
+                    $scope.stateAddOrEdit = "Edit";
+                }
+                $scope.stateId = id;
+                $scope.stateName = name;
+                $scope.stateDesc = desc;
+            }
+            $scope.editArea = function(id){
+                console.log("area Id for edit is " + id);
+                $scope.areaId = id;
+                if (id > 0)
+                {
+                    $scope.areaAddOrEdit = "Edit";
+                    getDataFromSrv("GetAreaForId", "id", id, function (result) {
+                        $scope.areacode = result.Item1;
+                        $scope.areaname = result.Item2;
+                        $scope.areadesc = result.Item3;
+                        $scope.areatert = result.Item4;
+                        $scope.areastate = result.Item5;
+                        $scope.areazone = result.Item6;
+                    });
+                }
+                else
+                {
+                    $scope.areaAddOrEdit = "Add";
+                    $scope.areacode = "";
+                    $scope.areaname = "";
+                    $scope.areadesc = "";
+                    $scope.areatert = "";
+                    $scope.areastate = "";
+                    $scope.areazone = "";
+                }
+            }
+            function ValidateDate(date, calback)
+            {
+                console.log(date);
+                if (date==="")
+                {
+                    calback(false);
+                    return "";
+                }
+                var res = /^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[\/]\d{4}$/.test(date);
+                var msg = "";
+                if (!res) {
+                    msg = "Date is not in correct format - DD/MM/YYYY";
+                    calback(!res);
+                }
+                else {
+                    getDataFromSrv("CheckIfDateIsGood", "date", date, function (result) {  calback(!result); });
+
+                    msg = date + " is not a valid calandar date";
+                }
+                return msg;
+            }
+
+            function getDataFromSrv(url, name, value, callBackOnSuccess)
+            {
+                var queryString = url + "?" + name + "=" + value;
+                console.log('Going to get http data for [' + queryString + ']');
+                $http.get(queryString)
+                .success(function (result) {
+                    console.log('Result for ' + queryString + " : ");
+                    console.log(result);
+                    callBackOnSuccess(result);
+                })
+                .error(function (data, status) {
+                    cosolle.error('Failed for ' + queryString + ". Data: " + data + " Status: " + status);
+                });
+            }
+
+            function getDataFromSrv2(url, name, value, name2, value2, callBackOnSuccess) {
+                var queryString = url + "?" + name + "=" + value + "&" + name2 + "=" + value2;
+                console.log('Going to get http data for [' +queryString + ']');
+                $http.get(queryString)
+                .success(function (result) {
+                    console.log('Result for ' +queryString + " : ");
+                    console.log(result);
+                    callBackOnSuccess(result);
+                })
+                .error(function (data, status) {
+                    cosolle.error('Failed for ' +queryString + ". Data: " +data + " Status: " + status);
+                });
+            }
+
+            function getDataFromSrv3(url, name, value, name2, value2, name3, value3, callBackOnSuccess) {
+                var queryString = url + "?" + name + "=" + value + "&" + name2 + "=" + value2 + "&" + name3 + "=" + value3;
+                console.log('Going to get http data for [' + queryString + ']');
+                $http.get(queryString)
+                .success(function (result) {
+                    console.log('Result for ' + queryString + " : ");
+                    console.log(result);
+                    callBackOnSuccess(result);
+                })
+                .error(function (data, status) {
+                    cosolle.error('Failed for ' + queryString + ". Data: " + data + " Status: " + status);
+                });
+            }
+
+            $scope.onFormInit = function (centerId) {
+                console.log('Update SG Init call. ' + centerId);
+
+                getDataFromSrv("GetDataForUiRender", "id", centerId, function (result) {
+                    $scope.editAreaId = result.AreaId;
+                    $scope.editDstId = result.DistId;
+                    $scope.centerCode = result.CenterCode;
+                    $scope.file = result.FileNo;
+                    $scope.centerType = result.CenterType;
+                    $scope.openingDate = result.OpenDate;
+                    $scope.upgradeDate = result.UpgDate;
+                    $scope.downgradeDate = result.DowngDate;
+                    $scope.landOwnerStatusId = result.LandOwnStatusId;
+                    $scope.ownedType = result.OwnedType;
+                    $scope.llStartDate = result.llStartDate;
+                    $scope.llEndDate = result.llEndDate;
+                    $scope.hasEngSatsang = result.hasEngSatsang == "True";
+                    $scope.hasHindiSatsang = result.hasHindiSatsang == "True";
+                    $scope.hasBalSatsang = result.hasBalSatsang == "True";
+                    $scope.hasMidWkHinStg1 = result.hasMidWkHinStg1 == "True";
+                    $scope.hasMidWkHinStg2 = result.hasMidWkHinStg2 == "True";
+                    $scope.isActive = result.IsActive == "True";
+
+                });
+            }
+
+            $scope.onBrowseInit = function(){
+                $scope.countryId = "IN";
+                $scope.zoneId = "2";
+
+                getDataFromSrv("GetActiveAreasForZone", "zoneId", $scope.zoneId, function (result) { $scope.areas = result; });
+            }
+        }
+    );
+
+    myApp.directive("sgSearchResult", function () {
+        return {
+            template: ''
+        }
+    });
+
+
+
